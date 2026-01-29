@@ -1,13 +1,8 @@
-"""
-Минимальная геометрическая библиотека для трансформаций.
-"""
-
 import math
 from typing import Tuple
 
 
 class Point:
-    """Точка в 2D пространстве."""
     
     def __init__(self, x: float, y: float):
         self.x = x
@@ -20,6 +15,12 @@ class Point:
         if not isinstance(other, Point):
             return False
         return math.isclose(self.x, other.x) and math.isclose(self.y, other.y)
+
+    def __mul__(self, scalar):
+        return Point(self.x * scalar, self.y * scalar)
+
+    def __rmul__(self, scalar):
+        return self.__mul__(scalar)
 
 
 class Vector:
