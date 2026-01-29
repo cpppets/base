@@ -21,6 +21,12 @@ class Point:
             return False
         return math.isclose(self.x, other.x) and math.isclose(self.y, other.y)
 
+    def __mul__(self, scalar):
+        return Point(self.x * scalar, self.y * scalar)
+
+    def __rmul__(self, scalar):
+        return self.__mul__(scalar)
+
 
 class Vector:
     """Вектор в 2D пространстве."""
